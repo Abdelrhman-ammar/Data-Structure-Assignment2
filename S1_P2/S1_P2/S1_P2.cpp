@@ -1,20 +1,105 @@
-// S1_P2.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+ 
+using namespace std;
+template <class t>
+class stack {
+private:
+	 
+	t *my_stack;
+	int capacity;
+	int current_size;
+public:
+	stack()
+	{
+		capacity = 50;
+		current_size = 0;
+		my_stack = new t[capacity];
+	}
+	stack(t value, int intial_size)
+	{
+		capacity = 3;
+		while (capacity < intial_size)
+		{
+			capacity += 5;
+		}
+		current_size = intial_size;
+		my_stack = new t[capacity];
+		for (int i = 0; i < intial_size; i++)
+		{
+			my_stack[i] = value;
+			 
+		}
 
+	}
+	~stack()
+	{
+		 
+		delete my_stack;
+	}
+	void resize()
+	{
+		t* my_new_stack;
+		my_new_stack = new t[capacity + 50];
+		for (int i = 0; i < current_size; i++)
+		{
+			my_new_stack[i] = my_stack[i];
+		}
+		my_stack = my_new_stack;
+		capacity += 50;
+	}
+	void push(t element)
+	{
+		if (current_size == capacity - 1)
+		{
+			resize();
+		}
+		
+		my_stack[current_size] = element;
+		current_size++;
+	}
+	bool isEmpty()
+	{
+		return current_size == 0;
+	}
+	t & top()
+	{
+		if (isEmpty())
+		{
+			cout << "empty" << endl;
+		}
+		else
+		{
+			return my_stack[current_size - 1];
+		}
+	}
+	void pop()
+	{
+		if (isEmpty())
+		{
+			cout << "the stack is empty" << endl;
+		}
+		else
+		{
+			current_size--;
+		}
+	}
+	void print()
+	{
+		for (int i = 0; i <current_size; i++)
+		{
+			cout << my_stack[i] << endl;
+		}
+	}
+	int size() {
+		return current_size;
+	}
+		
+};
 int main()
 {
-    std::cout << "Hello World!\n";
+	stack<string> s("fouad",6);
+	s.print();
+
+	system("pause");
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
