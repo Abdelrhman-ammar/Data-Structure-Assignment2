@@ -1,20 +1,132 @@
-// S1_P3.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
+using namespace std;
+template<class t>
+class Queue {
+	int rear, front, length, max_size = 20;
+	t *arr;
+public:
+	Queue()
+	{
+		front = 0;
+		rear = max_size - 1;
+		length = 0;
+		arr = new t[max_size];
+	}
+	Queue(t value, int size)
+	{
+		
+		if (size > 0)
+		{
+			max_size = size;
+		}
+		front = 0;
+		rear = max_size - 1;
+		length = 0;
+		arr = new t[max_size];
+		for (int i = 0; i < size; i++)
+		{
+			push(value);
+		}
+	}
+	~Queue()
+	{
+		delete arr;
+	}
+	int size()
+	{
+		return length;
+	}
+	bool isEmpty()
+	{
+		return length == 0;
+	}
+	void resize()
+	{
+		int i;
+		max_size += 10;
+		t* new_arr = new t[max_size];
+		for ( i = 0; i !=rear;  i=(i + 1) % max_size)
+		{
+			new_arr[i] = arr[front + i];
+		}
+		new_arr[ i] = arr[rear];
+		arr = new_arr;
+		front = 0;
+		rear = length - 1;
 
+	}
+	bool isFull()
+	{
+		return length == max_size;
+	}
+	 
+	void push(t value)
+	{
+		if (isFull())
+		{
+			resize();
+			cout << "the queue is full" << endl;
+		}
+		 
+			 
+			rear = (rear + 1) % max_size;
+			arr[rear] = value;
+			length++;
+		
+
+	}
+	void  pop() 
+	{
+		if (isEmpty())
+		{
+			cout << "the queue is empty" << endl;
+		}
+		else
+		{
+			front = (front + 1) % max_size;
+			length--;
+		}
+
+	}
+	t& frontqueue()
+	{
+		return arr[front];
+	}
+	t &rearqueue()
+	{
+		return arr[rear];
+	}
+	void print()
+	{
+		for (int i = front; i != rear; i = (i + 1) % max_size)
+		{
+			cout << arr[i] << endl;
+		}
+		cout << arr[rear] << endl;
+	}
+
+};
 int main()
 {
-    std::cout << "Hello World!\n";
+	Queue<int> u1(0,1);
+	u1.push(1);
+	u1.push(2);
+	u1.push(3);
+	u1.push(4);
+	u1.push(5);
+	u1.push(6);
+	u1.push(7);
+	u1.push(8);
+	u1.push(9);
+	u1.push(10);
+	u1.print();
+	u1.pop();
+	u1.pop();
+	u1.print();
+	u1.push(150);
+	u1.print();
+	 
+	return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+ 

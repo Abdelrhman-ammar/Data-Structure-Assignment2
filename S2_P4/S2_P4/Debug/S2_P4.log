@@ -1,0 +1,4 @@
+﻿  S2_P4.cpp
+D:\fci\term 4\DS\assignment\A2_20180198_20180146\Data-Structure-Assignment2\S2_P4\S2_P4\S2_P4.cpp(207,37): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\fci\term 4\DS\assignment\A2_20180198_20180146\Data-Structure-Assignment2\S2_P4\S2_P4\S2_P4.cpp(208,37): warning C4305: 'argument': truncation from 'double' to 'float'
+  S2_P4.vcxproj -> D:\fci\term 4\DS\assignment\A2_20180198_20180146\Data-Structure-Assignment2\S2_P4\Debug\S2_P4.exe
