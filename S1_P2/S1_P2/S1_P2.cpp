@@ -11,24 +11,31 @@ private:
 public:
 	stack()
 	{
-		capacity = 50;
+		capacity = 5;
 		current_size = 0;
 		my_stack = new t[capacity];
 	}
 	stack(t value, int intial_size)
 	{
 		capacity = 3;
-		while (capacity < intial_size)
+		if (intial_size > 0)
 		{
-			capacity += 5;
+			capacity = intial_size;
+			current_size = intial_size;
+			my_stack = new t[capacity];
+			for (int i = 0; i < intial_size; i++)
+			{
+				my_stack[i] = value;
+
+			}
 		}
-		current_size = intial_size;
-		my_stack = new t[capacity];
-		for (int i = 0; i < intial_size; i++)
+		else
 		{
-			my_stack[i] = value;
-			 
+			my_stack = new t[capacity];
+			cout << "you enterd a wrong value" << endl << "your stack size is " << capacity << " and have no elements" << endl;
 		}
+		
+		
 
 	}
 	~stack()
@@ -85,19 +92,28 @@ public:
 	}
 	void print()
 	{
-		for (int i = 0; i <current_size; i++)
+		if (isEmpty())
 		{
-			cout << my_stack[i] << endl;
+			cout << "stack is empty" << endl;
 		}
+		else
+		{
+			for (int i = 0; i < current_size; i++)
+			{
+				cout << my_stack[i] << endl;
+			}
+		}
+		
 	}
 	int size() {
 		return current_size;
 	}
 		
 };
+ 
 int main()
 {
-	stack<string> s("fouad",6);
+	stack<string> s("fouad",0);
 	s.print();
 
 	system("pause");
