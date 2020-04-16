@@ -1,0 +1,5 @@
+﻿  S2_P1.cpp
+C:\Users\DELL\Desktop\A2_20180146_20180198\S2_P1\S2_P1\S2_P1.cpp(11,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\Desktop\A2_20180146_20180198\S2_P1\S2_P1\S2_P1.cpp(31,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\Desktop\A2_20180146_20180198\S2_P1\S2_P1\S2_P1.cpp(40,17): warning C4018: '<': signed/unsigned mismatch
+  S2_P1.vcxproj -> C:\Users\DELL\Desktop\A2_20180146_20180198\S2_P1\Debug\S2_P1.exe
