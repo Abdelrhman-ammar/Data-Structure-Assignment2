@@ -247,4 +247,6 @@ public:
 		Iterator it(EndNode);
 		return it;
 	}
+	void Clear();
+	~List();
 };

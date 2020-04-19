@@ -130,4 +130,33 @@ bool List<type>::IsEmpty()
 {
 	return Length == 0;
 }
+
+template<typename type>
+void List<type>::Clear()
+{
+	Node* temp = First;
+	while (Length != 0)
+	{
+		temp = First;
+		First = First->Right;
+		delete temp;
+		Length--;
+	}
+	First = Last = EndNode;
+	Length = 0;
+}
+
+template<typename type>
+List<type>::~List()
+{
+	Node* temp = First;
+	while (Length != 0)
+	{
+		temp = First;
+		First = First->Right;
+		delete temp;
+		Length--;
+	}
+	First = Last = EndNode;
+}
 //////////////////////////////////End List/////////////////////////////////////////
